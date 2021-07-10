@@ -1,0 +1,62 @@
+<body>
+    <div class="page-wrapper">
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar2">
+            <div class="menu-sidebar2__content">
+                <div class="account2">
+                    <div class="image img-cir img-120">
+                        <img [src]="client.profileImg" [alt]="client.firstName" height="120" width="120" />
+                    </div>
+                    <h4 class="name">{{client.firstName}} {{client.lastName}}</h4>
+                    <a (click)="logout()">Sign out</a>
+                </div>
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li>
+                            <a routerLink="/dashboard/" routerLinkActive="active">profil</a>
+                        </li>
+                        <li>
+                            <a *ngIf="isSeller" routerLink="/dashboard/add" routerLinkActive="active">Add Article</a>
+                        </li>
+                        <li>
+                            <a *ngIf="!isSeller" routerLink="/dashboard/submit-seller-request"
+                                routerLinkActive="active">Submit seller request</a>
+                        </li>
+                        <li>
+                            <a *ngIf="isSeller" routerLink="/dashboard/my-articles/" routerLinkActive="active">My Active
+                                Articles</a>
+                        </li>
+                        <li>
+                            <a *ngIf="isSeller" routerLink="/dashboard/my-closed-articles/" routerLinkActive="active">My
+                                Closed Articles</a>
+                        </li>
+                        <li>
+                            <a routerLink="/dashboard/interesting/" routerLinkActive="active">Interesting Articles</a>
+                        </li>
+                        <li>
+                            <a routerLink="/dashboard/notifications/" routerLinkActive="active">Your Notifications</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <router-outlet></router-outlet>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END MAIN CONTENT-->
+            <!-- END PAGE CONTAINER-->
+        </div>
+    </div>
+</body>

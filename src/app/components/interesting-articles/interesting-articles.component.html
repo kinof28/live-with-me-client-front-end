@@ -1,0 +1,28 @@
+<div class="table-users">
+   <div class="header">Interisting Articles</div>
+   
+   <table cellspacing="0">
+      <tr>
+         <th></th>
+         <th>Title</th>
+         <!-- <th>Country</th>
+         <th>State</th>
+         <th>Province</th> -->
+         <th>Address</th>
+         <th>Remaining Places</th>
+         <th>Action</th>
+      </tr>
+      <tr *ngFor="let article of articles"> 
+         <td><img src="/api/v0/public/img/{{article.id}}/{{article.mainImage?article.mainImage:1}}" alt="{{article.title}}" /></td>
+         <td>{{article.title}} </td>
+         <!-- <td>{{article.country}}</td>
+         <td>{{article.state}}</td>
+         <td>{{article.province}}</td> -->
+         <td>{{article.address}}</td>
+         <td>{{article.remainingRoomMates}}</td>
+         <td><div class="buttonBlock"><button class="btn btn-info" (click)="request(article.id)">request Joining</button>
+            <button class="btn btn-warning" (click)="lostInterest(article.id)">Not interested</button>
+         </div></td>
+      </tr>
+   </table>
+</div>

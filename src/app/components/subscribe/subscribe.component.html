@@ -1,0 +1,81 @@
+<header class="masthead">
+    <div class="container h-100">
+        <div class="container register">
+            <div class="row">
+                <div class="col-md-3 register-left">
+                    <img src="../../../assets/favicon2.ico" alt="" />
+                    <h3>Welcome</h3>
+                    <p>You are 30 seconds away from finding your next room-mates</p>
+                    <input type="submit" value="Login" (click)="loginHundle()" /><br />
+                </div>
+                <div class="col-md-9 register-right">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active">
+                            <h3 class="register-heading"> Subscribe </h3>
+                            <div class="error-heading">{{errorMessage}} </div>
+                            <form #signUpForm="ngForm">
+                                <div class="row register-form">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="First Name *"
+                                                [(ngModel)]="registerRequest.firstName" ngModul name="firstName"
+                                                required minlength="3" maxlength="30" #firstName="ngModel"
+                                                pattern="([a-zA-Z]+[ ]?)+" />
+                                            <!-- <div *ngIf ="firstName.invalid"> you have some shit to fix</div> -->
+
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Last Name *"
+                                                [(ngModel)]="registerRequest.lastName" ngModul name="lastName" required
+                                                minlength="3" maxlength="30" #lastName="ngModel" pattern="([a-zA-Z]+[ ]?)+" />
+                                            <!-- <div *ngIf ="lastName.invalid"> you have some shit to fix</div> -->
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" minlength="10" maxlength="10" name="Phone"
+                                                class="form-control" placeholder="Your Phone *"
+                                                [(ngModel)]="registerRequest.phoneNumber" ngModul name="phoneNumber"
+                                                required minlength="3" maxlength="20" pattern="0[1-9][0-9]{7,8}"
+                                                #phoneNumber="ngModel" />
+                                        </div>
+                                        <!-- <div *ngIf ="phoneNumber.invalid"> you have some shit to fix</div> -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Your Email *"
+                                                [(ngModel)]="registerRequest.email" ngModul name="email"
+                                                #email="ngModel" required
+                                                pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" />
+                                            <!-- <div *ngIf ="email.invalid"> you have some shit to fix</div> -->
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="new Password *"
+                                                [(ngModel)]="registerRequest.password" ngModul name="password"
+                                                #password="ngModel" required minlength="5" />
+                                            <!-- <div *ngIf ="password.invalid"> you have some shit to fix</div> -->
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Confirm Password *"
+                                                [(ngModel)]="confirmationPassword" ngModul name="confirmedPassword"
+                                                #confirmedPassword="ngModel" required minlength="5" />
+                                        </div>
+
+                                    </div>
+                                    <input type="submit" class="btn btn-block btn-lg btn-primary" value="Register"
+                                        (click)="registerHundle(signUpForm)" [disabled]="signUpForm.invalid ||  wait" />
+                                    <!-- <div *ngIf ="signUpForm.invalid"> you have some shit to fix</div> -->
+                                    <div class="loading">
+                                        <img *ngIf="wait" src="../../../assets/Loader.gif" height="200" width="100%" alt="Loading">
+                                    </div>
+
+                                </div>
+                            </form>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

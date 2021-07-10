@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav" style="background: rgba(0, 0, 0, 0.5);" *ngIf="!isLogedIn">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger"routerLink="/home" routerLinkActive="active">Live With Me</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="/login" routerLinkActive="active">Login</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="/subscribe" routerLinkActive="active">Subscribe</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="/about" routerLinkActive="active">About</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="/help" routerLinkActive="active">Help</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav" style="background: rgba(0, 0, 0, 0.5);" *ngIf="isLogedIn">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger"routerLink="/home" routerLinkActive="active">Live With Me</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="/about" routerLinkActive="active">About</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="/help" routerLinkActive="active">Help</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

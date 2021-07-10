@@ -1,0 +1,95 @@
+<header class="masthead">
+    <div class="container h-100">
+        <div class="container-fluid px-0">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed">
+                <div class="container-fluid d-flex"> <a class="navbar-brand" routerLink="/home"> Home </a>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation"> <a class="nav-link" id="title-tab"
+                                data-toggle="tab" href="#title" role="tab" aria-controls="title" aria-selected="false">
+                                by Title</a> </li>
+                        <li class="nav-item" role="presentation"> <a class="nav-link" id="description-tab"
+                                data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="false">
+                                by Description</a> </li>
+                        <li class="nav-item" role="presentation"> <a class="nav-link" id="country-tab"
+                                data-toggle="tab" href="#country" role="tab" aria-controls="country" aria-selected="false">
+                                by Country</a> </li>
+                        <li class="nav-item" role="presentation"> <a class="nav-link" id="city-tab"
+                                data-toggle="tab" href="#city" role="tab" aria-controls="city" aria-selected="false">
+                                by City</a> </li>
+                        <li class="nav-item" role="presentation"> <a class="nav-link" id="type-tab" data-toggle="tab"
+                                href="#type" role="tab" aria-controls="type" aria-selected="false">by Type</a> </li>
+                        <li class="nav-item" role="presentation"> <a class="nav-link active" id="all-tab" data-toggle="tab"
+                                href="#all" role="tab" aria-controls="all" aria-selected="true">All</a> </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="container-fluid mt-2 mb-5">
+            <div class="products">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show" id="title" role="tabpanel" aria-labelledby="title-tab">
+                        <div class="row g-3">
+                            <div *ngFor=" let article of titleList" class="col-md-4">
+                                <app-article-card [article]="article" [isInteresting]="isInteresting(article)"
+                                    [isPublished]="isPublished(article)" [isRequested]="isRequested(article)">
+                                </app-article-card>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show" id="description" role="tabpanel" aria-labelledby="description-tab">
+                        <div class="row g-3">
+                            <div *ngFor=" let article of descriptionList" class="col-md-4">
+                                <app-article-card [article]="article" [isInteresting]="isInteresting(article)"
+                                    [isPublished]="isPublished(article)" [isRequested]="isRequested(article)">
+                                </app-article-card>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show" id="country" role="tabpanel" aria-labelledby="country-tab">
+                        <div class="row g-3">
+                            <div *ngFor=" let article of countryList" class="col-md-4">
+                                <app-article-card [article]="article" [isInteresting]="isInteresting(article)"
+                                    [isPublished]="isPublished(article)" [isRequested]="isRequested(article)">
+                                </app-article-card>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show" id="city" role="tabpanel" aria-labelledby="city-tab">
+                        <div class="row g-3">
+                            <div *ngFor=" let article of stateList" class="col-md-4">
+                                <app-article-card [article]="article" [isInteresting]="isInteresting(article)"
+                                    [isPublished]="isPublished(article)" [isRequested]="isRequested(article)">
+                                    {{show(article.id)}}
+                                </app-article-card>
+                            </div>
+                            <div *ngFor=" let article of provinceList" class="col-md-4">
+                                <app-article-card *ngIf(!shown.has(article.id)) [article]="article" [isInteresting]="isInteresting(article)"
+                                    [isPublished]="isPublished(article)" [isRequested]="isRequested(article)">
+                                </app-article-card>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show" id="type" role="tabpanel" aria-labelledby="type-tab">
+                        <div class="row g-3">
+                            <div *ngFor=" let article of typeList" class="col-md-4">
+                                <app-article-card [article]="article" [isInteresting]="isInteresting(article)"
+                                    [isPublished]="isPublished(article)" [isRequested]="isRequested(article)">
+                                </app-article-card>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+                        <div class="row g-3">
+                            <div *ngFor=" let article of allList" class="col-md-4">
+                                <app-article-card [article]="article" [isInteresting]="isInteresting(article)"
+                                    [isPublished]="isPublished(article)" [isRequested]="isRequested(article)" >
+                                </app-article-card>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

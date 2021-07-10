@@ -1,0 +1,16 @@
+.card{
+    /* height: 370px; */
+    margin-top: auto;
+    margin-bottom: auto;
+    /* width: 400px; */
+    background-color: rgba(0,0,0,0.5) !important;
+    flex-direction: column;
+    align-items: center;
+    }
+        
+    .card-header h3{
+    color: white;
+    }
+p{
+    color:burlywood;
+}

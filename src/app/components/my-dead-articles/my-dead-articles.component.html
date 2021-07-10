@@ -1,0 +1,27 @@
+<div class="table-users">
+    <div class="header">Closed Articles</div>
+ 
+    <table cellspacing="0">
+       <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Address</th>
+          <th>Deal Detailes</th>
+          <!-- <th>Action</th> -->
+       </tr>
+       <tr *ngFor="let article of articles; let i = index">
+          <td><img src="/api/v0/public/img/{{article.id}}/{{article.mainImage?article.mainImage:1}}"
+                alt="{{article.title}}" /></td>
+          <td>{{article.title}} </td>
+          <td>{{article.address}}</td>
+          <td><a routerLink="/dashboard/deal/{{article.id}}">Deal Detailes</a></td>
+          <!-- <td>
+             <div class="buttonBlock">
+                 <button class="btn btn-warning" (click)="update(article.id)" >Update</button>
+                <button class="btn btn-danger" style="border-radius: 50%;" (click)="delete(article.id)">X</button> 
+                
+             </div>
+          </td> -->
+       </tr>
+    </table>
+ </div>

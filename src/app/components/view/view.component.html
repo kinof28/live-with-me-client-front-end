@@ -1,0 +1,46 @@
+<header class="masthead">
+    <div class="container h-100">
+        <div class="container-fluid px-0">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed">
+                <div class="container-fluid d-flex"> <a class="navbar-brand" routerLink="/home"> Home </a>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation"> <a class="nav-link" id="county-tab" data-toggle="tab"
+                                href="#county" role="tab" aria-controls="county" aria-selected="false">In your Country</a> </li>
+                        <li class="nav-item" role="presentation"> <a class="nav-link  active" id="city-tab" data-toggle="tab"
+                                href="#city" role="tab" aria-controls="city" aria-selected="true">In your City</a> </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div style="color: crimson;"> <h1> {{warningMessage}} </h1> </div>
+        <div class="container-fluid mt-2 mb-5">
+            <div class="products">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show" id="county" role="tabpanel" aria-labelledby="county-tab">
+                        <div class="row g-3">
+                            <div *ngFor=" let article of countryList" class="col-md-4">
+                                <app-article-card [article]="article" [isInteresting]="isInteresting(article)" [isPublished]="isPublished(article)" [isRequested]="isRequested(article)" ></app-article-card>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show  active" id="city" role="tabpanel" aria-labelledby="city-tab">
+                        <div class="row g-3">
+                            <div *ngFor=" let article of stateList" class="col-md-4">
+                                <app-article-card [article]="article" [isInteresting]="isInteresting(article)"
+                                    [isPublished]="isPublished(article)" [isRequested]="isRequested(article)">
+                                    {{show(article.id)}}
+                                </app-article-card>
+                            </div>
+                            <div *ngFor=" let article of provinceList" class="col-md-4">
+                                <app-article-card *ngIf(!shown.has(article.id)) [article]="article" [isInteresting]="isInteresting(article)"
+                                    [isPublished]="isPublished(article)" [isRequested]="isRequested(article)">
+                                </app-article-card>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

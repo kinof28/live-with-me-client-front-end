@@ -1,0 +1,41 @@
+<div class="testbox" *ngIf="canSubmit">
+  <form #requestForm="ngForm">
+    <div class="banner">
+      <h1>Become a Seller</h1>
+    </div>
+    <div class="item">
+      <label for="email">ID Number <span>*</span></label>
+      <input id="idNumber" type="text" name="IdNumber" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+        [(ngModel)]="sellerRequest.idNumber" ngModul name="idNumber" required minlength="3" maxlength="20"
+        #idNumber="ngModel" pattern="[0-9]*" /><br />
+      <span *ngIf="idNumber.touched && idNumber.invalid">id number must contain only digits</span>
+    </div>
+    <div class="item">
+      <p>your face Picture <span>*<br />{{message1}}</span></p>
+
+      <input type="file" name="face-pic" placeholder="face-picture" accept="image/*" required
+        (change)="onSelectFile1($event)" />
+      <img [src]="faceImgUrl" height="100" />
+    </div>
+    <div class="item">
+      <p>Your Id Picture <span>*<br />{{message2}}</span></p>
+      <input type="file" name="id-pic" placeholder="ID-picture" accept="image/*" required
+        (change)="onSelectFile2($event)" />
+      <img [src]="idImgUrl" height="100" />
+    </div>
+    <div class="btn-block">
+      <input type="submit" (click)="submit()" [disabled]="requestForm.invalid || invalid1 || invalid2 || invalid3" value="Submit Request"
+        class="btn btn-block btn-lg btn-primary" />
+    </div>
+    <div style="text-align: center;"><h1 style="color: red;">{{messageR}} </h1>  </div>
+    <div style="text-align: center;"><h1 style="color: green;">{{messageG}} </h1>  </div>
+  </form>
+
+</div>
+<div class="testbox2" *ngIf="!canSubmit">
+    <div class="banner2">
+      <h1>Please wait until your request have been treated to perform an action </h1><br/>
+      <h1> Usualy it took around 24H  </h1>
+
+    </div>
+</div>

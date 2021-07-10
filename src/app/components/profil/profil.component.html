@@ -1,0 +1,129 @@
+<div class="container">
+    <div class="overview-wrap">
+        <h2 class="title-1">overview</h2>
+        <h2 class="title-1 successMessage">{{successMessage}} </h2>
+        <h2 class="title-1 errMessage">{{errMessage}} </h2>
+        <button class="au-btn au-btn-icon au-btn--blue" (click)="sell()">{{isSeller?"add
+            Article" : "become a seller"}} </button>
+    </div>
+    <div class="row gutters">
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="account-settings">
+                        <div class="user-profile">
+                            <div class="user-avatar">
+                                <img [src]="client.profileImg" [alt]="client.firstName">
+                            </div>
+                            <h5 class="user-name">{{client.firstName}} {{client.lastName}} </h5>
+                            <h6 class="user-email">{{client.email}} </h6>
+                        </div>
+                        <div class="about">
+                            <input type="file" style="display: none;" accept="image/*" (change)="onFileSelected($event)"
+                                #profilUp>
+                            <button type="button" (click)="profilUp.click()" class="btn btn-primary">Update Picture
+                            </button>
+                            <div style="color: red;">{{message}} </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <form #updateForm="ngForm">
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mb-2 text-primary">Personal Details</h6>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" class="form-control" id="firstName"
+                                        [placeholder]="client.firstName" [(ngModel)]="updateClientRequest.firstName"
+                                        ngModul name="firstName" minlength="3" maxlength="30"
+                                        #firstName="ngModel" pattern="([a-zA-Z]+[ ]?)+">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="lastName">last Name</label>
+                                    <input type="text" class="form-control" id="lastName"
+                                        [placeholder]="client.lastName" [(ngModel)]="updateClientRequest.lastName"
+                                        ngModul name="lastName" minlength="3" maxlength="30"
+                                        #lastName="ngModel" pattern="([a-zA-Z]+[ ]?)+">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="eMail">Email</label>
+                                    <input type="email" class="form-control" id="eMail" [placeholder]="client.email"
+                                        disabled>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input type="text" class="form-control" id="phone"
+                                        [placeholder]="client.phoneNumber"
+                                        onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                                        [(ngModel)]="updateClientRequest.phoneNumber" ngModul name="phoneNumber"
+                                        pattern="0[1-9][0-9]{7,8}"
+                                        #phoneNumber="ngModel">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mt-3 mb-2 text-primary">Address</h6>
+                            </div>
+                            <div class="col-xl-12 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="Address">Address</label>
+                                    <input type="name" class="form-control" id="Address"
+                                        [placeholder]="client.address?client.address:addressPlaceHolder"
+                                        [(ngModel)]="updateClientRequest.address" ngModul name="address"
+                                        minlength="5" maxlength="50" #address="ngModel" pattern="([A-Za-z0-9.-]+[ ]?)+">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mt-3 mb-2 text-primary">Security</h6>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="newPassword">new password</label>
+                                    <input type="password" class="form-control" id="newPassword"
+                                        placeholder="Enter you new password"
+                                        [(ngModel)]="updateClientRequest.newPassword" ngModul name="password"
+                                        #password="ngModel" minlength="5">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="confirmePassword">confirm password</label>
+                                    <input type="password" class="form-control" id="confirmePassword"
+                                        placeholder="Confirm your password" [(ngModel)]="confirmationPassword" ngModul name="confirmation"
+                                        #confirmation="ngModel" minlength="5">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row gutters">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="text-right">
+                                <button type="button" class="btn btn-info" (click)="reloadHundle()">Reload</button>
+                                <button type="button" class="btn btn-warning" (click)="clearHundle()">Clear</button>
+                                <button type="button" class="btn btn-primary" (click)="updateHundle()" [disabled]="updateForm.invalid">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

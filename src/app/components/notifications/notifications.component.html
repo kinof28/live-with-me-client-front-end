@@ -1,0 +1,70 @@
+<div class="container">
+    <div *ngFor="let notification of notifications">
+        <div *ngIf="notification.type===joinReq" class="request">
+            <h3>
+                <a routerLink="/client/{{notification.origin.id}}"> {{notification.origin.firstName}}
+                    {{notification.origin.lastName}}</a>
+                requested to join :
+                <a routerLink="/article/{{notification.article.id}}"> {{notification.article.title}} </a>
+            </h3>
+            <button class="btn btn-primary" style="margin-left: 1rem;margin-right: 1rem;"
+                (click)="approave(notification.article.id,notification.origin.id,notification.id)">Approave</button>
+            <button class="btn btn-warning" style="margin-left: 1rem;margin-right: 1rem;"
+                (click)="decline(notification.article.id,notification.origin.id,notification.id)">decline</button>
+        </div>
+        <div *ngIf="notification.type===joinApp" class="approaval">
+            <h3>
+                <a routerLink="/client/{{notification.origin.id}}"> {{notification.origin.firstName}}
+                    {{notification.origin.lastName}}</a>
+                Accepted your join request to
+                <a routerLink="/article/{{notification.article.id}}"> {{notification.article.title}} </a>
+            </h3>
+            <button class="btn btn-primary" style="margin-left: 1rem;margin-right: 1rem;"
+                (click)="ignore(notification.id)">Ok</button>
+        </div>
+        <div *ngIf="notification.type===joinDeq" class="decline">
+            <h3>
+                <a routerLink="/client/{{notification.origin.id}}"> {{notification.origin.firstName}}
+                    {{notification.origin.lastName}}</a>
+                Declined your join request to
+                <a routerLink="/article/{{notification.article.id}}"> {{notification.article.title}} </a>
+            </h3>
+            <button *ngIf="canRequest(notification.article)" class="btn btn-primary"
+                style="margin-left: 1rem;margin-right: 1rem;"
+                (click)="requestJoin(notification.article.id,notification.id)">Request to Join Again</button>
+            <button class="btn btn-warning" style="margin-left: 1rem;margin-right: 1rem;"
+                (click)="ignore(notification.id)">Ignore</button>
+        </div>
+        <div *ngIf="notification.type===omited" class="decline">
+            <h3>
+                <a routerLink="/client/{{notification.origin.id}}"> {{notification.origin.firstName}}
+                    {{notification.origin.lastName}}</a>
+                Ommited you from
+                <a routerLink="/article/{{notification.article.id}}"> {{notification.article.title}} </a>
+            </h3>
+            <button *ngIf="canRequest(notification.article)" class="btn btn-primary"
+                style="margin-left: 1rem;margin-right: 1rem;"
+                (click)="requestJoin(notification.article.id,notification.id)">Request to Join Again</button>
+            <button class="btn btn-warning" style="margin-left: 1rem;margin-right: 1rem;"
+                (click)="ignore(notification.id)">Ignore</button>
+        </div>
+        <div *ngIf="notification.type===sel_demande_approval" class="decline">
+            <h3>
+                Your Request to become a seller has been approved <br> u may upload your articles now
+            </h3>
+            <button class="btn btn-primary" style="margin-left: 1rem;margin-right: 1rem;"
+                (click)="upload(notification.id)">Upload article</button>
+            <button class="btn btn-warning" style="margin-left: 1rem;margin-right: 1rem;"
+                (click)="ignore(notification.id)">Ignore</button>
+        </div>
+        <div *ngIf="notification.type===sel_demande_reject" class="decline">
+            <h3>
+                Your Request to become a seller has been rejected
+            </h3>
+            <button class="btn btn-primary" style="margin-left: 1rem;margin-right: 1rem;"
+                (click)="seller(notification.id)">Submit new request</button>
+            <button class="btn btn-warning" style="margin-left: 1rem;margin-right: 1rem;"
+                (click)="ignore(notification.id)">Ignore</button>
+        </div>
+    </div>
+</div>

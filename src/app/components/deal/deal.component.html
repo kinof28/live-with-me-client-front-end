@@ -1,0 +1,28 @@
+<div class="article">
+    <h2>Article</h2>
+    <h3> <a routerLink="/article/{{deal.article.id}}">{{deal.article.title}}</a> </h3>
+    <h2>remaining: <span> {{deal.article.remainingRoomMates}} </span></h2>
+    <h2>from total of : <span> {{deal.article.numberOfRoomMates}} </span></h2>
+    
+</div>
+<hr />
+<div class="requesters" *ngIf="deal.requesters.length>0">
+    <h2>Requesters</h2>
+    <div *ngFor="let client of deal.requesters">
+        <div class="clientDiv">
+        <a routerLink="/client/{{client.id}}"> <h2>{{client.firstName}} {{client.lastName}} </h2> </a>
+        <button class="btn btn-primary" (click)="approave(client.id)">approave</button>
+        <button class="btn btn-warning" (click)="decline(client.id)">decline</button>
+        <br>
+        </div>
+    </div>
+<hr />
+
+</div>
+<div class="buyers" *ngIf="deal.buyers.length>0">
+    <h2>buyers</h2>
+    <div *ngFor="let client of deal.buyers" class="clientDiv">
+        <a routerLink="/client/{{client.id}}"> <h2>{{client.firstName}} {{client.lastName}} </h2> </a><br>
+        <button class="btn btn-danger" (click)="omit(client.id,deal.article.id,deal.id)" >Omit buyer</button>
+    </div>
+</div>

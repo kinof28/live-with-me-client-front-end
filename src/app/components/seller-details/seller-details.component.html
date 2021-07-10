@@ -1,0 +1,61 @@
+<div class="padding" *ngIf="client!==null ; else elseBlock">
+    <div class="row container d-flex justify-content-center">
+        <div class="col-xl-9 col-md-12">
+            <div class="card user-card-full">
+                <div class="row m-l-0 m-r-0">
+                    <div class="col-sm-3 bg-c-lite-green user-profile">
+                        <div class="card-block text-center text-white">
+                            <div class="m-b-25"> <img src="/api/v0/public/img/{{client.id}}" class="img-radius"
+                                    alt="User-Profile-Image" height="100"> </div>
+                            <h6 class="f-w-600">{{client.firstName}} {{client.lastName}} </h6>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="card-block">
+                            <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Contact Information</h6>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Email</p>
+                                    <h6 class="text-muted f-w-400">{{client.email}} </h6>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Phone</p>
+                                    <h6 class="text-muted f-w-400">{{client.phoneNumber}} </h6>
+                                </div>
+                                <!-- <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Contact</p>
+                                    <h6 class="text-muted f-w-400"><button class="btn btn-info">Send Message</button> </h6>
+                                </div> -->
+                                <div *ngIf="client.address" class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Address</p>
+                                    <h6 class="text-muted f-w-400">{{client.address}} </h6>
+                                </div>
+                            </div>
+                            <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Articles</h6>
+                            <div class="row" *ngFor="let article of client.publishedArticles">
+                                <div class="col-sm-12">
+                                    <a routerLink="/article/{{article.id}}">
+                                        <p class="m-b-10 f-w-600">{{article.title}} </p>
+                                    </a>
+                                    <h6 class="text-muted f-w-400">{{article.country}} {{article.state}}
+                                        {{article.province}} </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #elseBlock>
+    <header class="masthead">
+        <div class="container h-100">
+            <div class="aboutCard">
+                <h1>Sorry no page for this seller <br> please try later
+                    <br><a routerLink="/home" routerLinkActive="active"> go back to home </a>
+                </h1>
+            </div>
+        </div>
+    </header>
+</ng-template>

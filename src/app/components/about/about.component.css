@@ -1,0 +1,11 @@
+.body{
+    display: grid;
+    place-items: center;
+}
+.aboutCard{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    border-radius: 2rem;
+    padding: 2rem;
+    transform: translateY(2rem);
+    box-shadow: 4px 4px 2px 12px rgba(15, 14, 12, 0.4);
+}

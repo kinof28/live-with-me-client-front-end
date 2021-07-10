@@ -1,0 +1,24 @@
+<div class="card">
+    <img src="/api/v0/public/img/{{article.id}}/{{article.mainImage?article.mainImage:1}}" class="card-img-top">
+    <div class="card-body">
+        <div class="d-flex justify-content-between"> <span class="font-weight-bold"><p> {{ article.title }} </p></span>
+            <span class="font-weight-bold"><p> {{ article.price }} Dz </p></span>
+        </div>
+        <p class="card-text mb-1 mt-1">{{ article.description }} </p>
+        <div class="d-flex align-items-center flex-row"> remaining : <span class="guarantee">{{
+                article.remainingRoomMates }} places</span> </div>
+    </div>
+    <hr>
+    <div class="card-body">
+        <div class="text-right buttons">
+            <button class="btn btn-outline-info" (click)="plusDetailesHundle()">Plus Detailes</button>
+            <button class="btn btn-info" *ngIf="isLoged && !isPublished && !isInteresting" (click)="interest()"><span
+                    class="fa fa-thumbs-up"></span></button>
+            <button class="btn btn-info" *ngIf="isLoged && !isPublished && isInteresting" (click)="lostInterest()"><span
+                    class="fa fa-thumbs-down"></span></button>
+            <button class="btn btn-primary" [disabled]="isRequested" *ngIf="isLoged && !isPublished"
+                (click)="requestJoin()" [title]=!isRequested?requestTitle:requestedTitle>Request Joining </button>
+            <button class="btn btn-primary" *ngIf="isLoged && isPublished" (click)="update()">Update </button>
+        </div>
+    </div>
+</div>

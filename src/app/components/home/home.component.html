@@ -1,0 +1,28 @@
+<header class="masthead">
+  <div class="container h-100">
+      <div class="row h-100 align-items-center justify-content-center text-center">
+        <div class="col-lg-10 align-self-end">
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto shadow-box">
+        <form #searchForm="ngForm">
+          <div class="form-row">
+            <div class="col-12 col-md-9 mb-2 mb-md-0">
+              <input type="text"  name ="searchText" class="form-control form-control-lg" 
+                    placeholder="Start your search" [(ngModel)]="searchText" 
+                    required minlength="3" #txt="ngModel" ngModul >
+                    <div *ngIf="txt.touched&&txt.invalid" style="color: rgb(160, 22, 22);background-color:rgba(185, 169, 22, 0.73);border-radius: 1rem; ;"> please enter at least 3 no special characters  </div>
+            </div>
+            <div class="col-12 col-md-3">
+              <button class="btn btn-block btn-lg btn-primary" type="submit" (click)="search()" [disabled]="searchForm.invalid">Search!</button>
+            </div>
+          </div>
+        </form>
+    </div>
+              <hr class="divider my-4" />
+          </div>
+          <div class="col-lg-8 align-self-baseline">
+              <h1 class="text-white-75 font-weight-light mb-5"> Go near </h1>
+              <a class="btn btn-primary btn-xl" routerLink ="/view" routerLinkActive="active">Explore nearby stays</a>
+          </div>
+      </div>
+  </div>
+</header>
